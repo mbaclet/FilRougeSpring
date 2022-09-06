@@ -2,6 +2,7 @@ package fr.m2i.fil_rouge_spring.controllers;
 
 import fr.m2i.fil_rouge_spring.models.User;
 import fr.m2i.fil_rouge_spring.services.ProfilService;
+import fr.m2i.fil_rouge_spring.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,11 +16,11 @@ import java.util.Optional;
 public class ProfilController {
 
     @Autowired
-    private ProfilService ps;
+    private UserService us;
 
     @GetMapping("/getProfil/{id}")
     public User getProfil(@PathVariable("id") final long id) {
-        Optional<User> user = ps.getProfil(id);
+        Optional<User> user = us.getUser(id);
         return user.get();
     }
 

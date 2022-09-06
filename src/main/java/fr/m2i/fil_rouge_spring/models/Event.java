@@ -22,7 +22,7 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer _id;
+    private Long _id;
 
     @Basic
     @Column(name = "title")
@@ -70,11 +70,11 @@ public class Event {
     }
 
 
-    public Integer get_id() {
+    public Long get_id() {
         return _id;
     }
 
-    public void set_id(Integer _id) {
+    public void set_id(Long _id) {
         this._id = _id;
     }
 
