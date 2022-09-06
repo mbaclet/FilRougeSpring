@@ -7,9 +7,6 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-
 @Data
 @Service
 public class ContactService {
@@ -23,5 +20,12 @@ public class ContactService {
 
     public User checkCollaborator(String email) {
         return cr.checkCollaborator(email);
+    }
+
+    public void deleteCollaborator(Long id) {
+        Iterable<Collaborator> collaborators = cr.findAllCollaboLinkToUser(id);
+        for(Collaborator collabo:collaborators){
+            cr.deleteById(collabo.get_id().longValue());
+        }
     }
 }

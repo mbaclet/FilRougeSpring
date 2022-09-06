@@ -64,7 +64,6 @@ public class AdminService {
         for(Collaborator collabo:collaborators){
             cr.deleteById(collabo.get_id().longValue());
         }
-
     }
 
 }
