@@ -1,4 +1,4 @@
 package fr.m2i.fil_rouge_spring.repositories;
 
-public class UserRepository {
+public interface InscriptionRepository {
 }
