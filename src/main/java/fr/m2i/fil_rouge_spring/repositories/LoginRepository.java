@@ -1,4 +1,20 @@
 package fr.m2i.fil_rouge_spring.repositories;
 
-public interface LoginRepository {
+import fr.m2i.fil_rouge_spring.models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface LoginRepository extends JpaRepository<User, Long> {
+
+    @Query("SELECT u FROM User u WHERE u.email LIKE :email")
+    public List<User> getLogin(@Param("email") String email);
+
+    @Query("SELECT u FROM User u WHERE u.password LIKE :password")
+    public List<User> getPassword(@Param("password") String password);
+
 }

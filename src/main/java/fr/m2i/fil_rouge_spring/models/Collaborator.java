@@ -24,7 +24,7 @@ public class Collaborator {
 
     @Basic
     @Column(name = "user_id")
-    private Integer user;
+    private Long user;
 
     @ManyToOne()
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -47,7 +47,7 @@ public class Collaborator {
         super();
     }
 
-    public Collaborator(Integer user_id, User user_collabo_id, Boolean edit, Boolean see, Boolean share) {
+    public Collaborator(Long user_id, User user_collabo_id, Boolean edit, Boolean see, Boolean share) {
         super();
         this.user = user_id;
         this.user_collabo_id = user_collabo_id;
@@ -64,11 +64,11 @@ public class Collaborator {
         this._id = _id;
     }
 
-    public Integer getUser() {
+    public Long getUser() {
         return user;
     }
 
-    public void setUser(Integer user) {
+    public void setUser(Long user) {
         this.user = user;
     }
 

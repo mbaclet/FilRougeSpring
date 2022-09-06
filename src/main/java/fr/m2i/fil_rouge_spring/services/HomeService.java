@@ -12,11 +12,7 @@ public class HomeService {
     @Autowired
     HomeRepository hr;
 
-    public Iterable<Event> getEvents() {
-        return hr.findAll();
-    }
-
     public Iterable<Event> getLastTenEvents(){
-        return hr.getLastTenEvents(PageRequest.of(0, 2));
+        return hr.getLastTenEvents(PageRequest.of(0, 10));
     }
 }
