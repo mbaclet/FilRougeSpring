@@ -9,7 +9,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer _id;
+    private Long _id;
 
     @Basic
     @Column(name = "first_name")
@@ -48,15 +48,15 @@ public class User {
     private String password;
 
     @Basic
-    @Column(name = "isConnected")
-    private Boolean isConnected;
+    @Column(name = "is_connected")
+    private Boolean is_connected;
 
     public User() {
 
     }
 
     public User(String first_name, String last_name, String city, String street, String zipcode, String country,
-                String role, String email, String password, Boolean isConnected) {
+                String role, String email, String password, Boolean is_connected) {
         super();
         this.first_name = first_name;
         this.last_name = last_name;
@@ -67,14 +67,14 @@ public class User {
         this.role = role;
         this.email = email;
         this.password = password;
-        this.isConnected = isConnected;
+        this.is_connected = is_connected;
     }
 
-    public Integer get_id() {
+    public Long get_id() {
         return _id;
     }
 
-    public void set_id(Integer _id) {
+    public void set_id(Long _id) {
         this._id = _id;
     }
 
@@ -151,10 +151,10 @@ public class User {
     }
 
     public Boolean getIsConnected() {
-        return isConnected;
+        return is_connected;
     }
 
-    public void setIsConnected(Boolean isConnected) {
-        this.isConnected = isConnected;
+    public void setIsConnected(Boolean is_connected) {
+        this.is_connected = is_connected;
     }
 }
