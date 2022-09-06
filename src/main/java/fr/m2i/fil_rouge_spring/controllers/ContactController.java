@@ -6,6 +6,8 @@ import fr.m2i.fil_rouge_spring.services.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/contact")
 public class ContactController {
@@ -22,4 +24,15 @@ public class ContactController {
     public User checkCollaborator (@RequestBody String email) {
         return cs.checkCollaborator(email);
     }
+
+    @PostMapping("/deleteCollaborator")
+    public void deleteCollaborator(Long id, Long user) {
+        cs.deleteCollaborator(id);
+    }
+
+//    @PostMapping("/addCollaborator")
+//    public Collaborator addCollaborator() {
+//        return cs.addCollaborator();
+//    }
+
 }
