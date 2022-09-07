@@ -11,6 +11,9 @@ import java.util.List;
 @Repository
 public interface HomeRepository extends JpaRepository<Event, Long> {
 
-    @Query("SELECT u FROM Event u order by u._id DESC")
+    @Query("SELECT e FROM Event e order by e._id DESC")
     public List<Event> getLastTenEvents(Pageable pageable);
+
+    @Query("SELECT e FROM Event e WHERE e.user_id._id = :id")
+    public Iterable<Event> getEvents( Long id);
 }

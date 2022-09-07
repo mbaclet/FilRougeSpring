@@ -28,4 +28,12 @@ public class ContactService {
             cr.deleteById(collabo.get_id().longValue());
         }
     }
+
+//    public Collaborator addCollaborator() {
+//        return cr.addCollaborator();
+//    }
+//
+//    public Collaborator editCollaborator() {
+//        return cr.editCollaborator();
+//    }
 }

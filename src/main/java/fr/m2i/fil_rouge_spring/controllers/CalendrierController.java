@@ -9,6 +9,7 @@ import fr.m2i.fil_rouge_spring.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Array;
 import java.util.*;
 
 @RestController
@@ -37,11 +38,13 @@ public class CalendrierController {
     }
 
     @PostMapping("/getEvents")
-    public Iterable<Event> getEvents(@RequestBody ArrayList info) {
+    public Iterable<Event> getEvents(@RequestBody ArrayList<String> info) {
         long convertIdToLong = Integer.toUnsignedLong(Integer.parseInt(info.get(1).toString()));
         Optional<User> user = us.getUser(convertIdToLong);
 
-        return cs.getEvents(user, Integer.parseInt(info.get(0).toString()));
+     //   String getmonth = info.get(0).toString().split("-")[1];
+      //  System.out.println(getmonth);
+        return cs.getEvents(user, info.get(0).toString());
     }
 
     @PostMapping("/getEvent")
@@ -60,7 +63,7 @@ public class CalendrierController {
     }
 
     @PostMapping("/editEvent")
-    public Boolean editEvent(@RequestBody List event) {
+    public Boolean editEvent(@RequestBody ArrayList<String> event) {
         long convertIdToLong = Integer.toUnsignedLong(Integer.parseInt(event.get(5).toString()));
         Optional<Event> eventFound = cs.getEvent(convertIdToLong);
         if(eventFound.isPresent()) {

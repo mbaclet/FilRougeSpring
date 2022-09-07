@@ -23,5 +23,9 @@ public interface ContactRepository extends JpaRepository<Collaborator, Long> {
 
     @Query("SELECT c FROM Collaborator c WHERE c.user = :id AND c.user_collabo_id = :user_collabo_id")
     public Boolean checkIfCollaboratorExists(@Param("id") Long id, @Param("user_collabo_id") Long user_collabo_id);
+//
+//    Collaborator addCollaborator();
+//
+//    Collaborator editCollaborator();
 }
 
