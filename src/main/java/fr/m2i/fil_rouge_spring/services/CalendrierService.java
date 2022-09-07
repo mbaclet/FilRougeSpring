@@ -8,6 +8,7 @@ import fr.m2i.fil_rouge_spring.repositories.CalendrierRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -18,15 +19,22 @@ public class CalendrierService {
     @Autowired
     CalendrierRepository cr;
 
+    @Transactional()
     public Iterable<Event> eventsLinkToUser(Optional<User> user, Integer mois){
         return cr.eventsLinkToUser(user, mois);
     }
+
+    @Transactional()
     public Iterable<Calendrier> currentMonth(Integer mois){
         return cr.currentMonth(mois);
     }
+
+    @Transactional()
     public Iterable<Event> getEvents(Optional<User> user, Integer mois){
         return cr.getEvents(user, mois);
     }
+
+    @Transactional()
     public Optional<Event> getEvent(Long id){
         return cr.findById(id);
     }
@@ -50,10 +58,12 @@ public class CalendrierService {
     }
 
     //PART GET COLLABORATORS
+    @Transactional()
     public Iterable<Integer> findIdOfCollaborator(Optional<User> user){
         return cr.findIdOfCollaborator(user);
     }
 
+    @Transactional()
     public Iterable<Collaborator> getListCollaborator(Optional<User> user){
         return cr.getListCollaborator(user);
     }

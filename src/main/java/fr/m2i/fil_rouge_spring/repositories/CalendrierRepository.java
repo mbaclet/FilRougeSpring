@@ -32,5 +32,5 @@ public interface CalendrierRepository extends JpaRepository<Event, Long> {
     public List<Integer> findIdOfCollaborator(@Param("user") Optional<User> user);
 
     @Query("SELECT c FROM Collaborator c WHERE c.user_collabo_id = :user AND c.see = true")
-    public List<Collaborator> getListCollaborator(@Param("id") Optional<User> user);
+    public List<Collaborator> getListCollaborator(@Param("user") Optional<User> user);
 }
