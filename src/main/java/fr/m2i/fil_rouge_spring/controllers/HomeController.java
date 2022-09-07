@@ -15,7 +15,7 @@ public class HomeController {
     @Autowired
     HomeService hs;
 
-    @GetMapping("/getLastTenEvents")
+    @GetMapping("/getLastsEvent")
     public Iterable<Event> getLasTenEvents(){
         return hs.getLastTenEvents();
     }
