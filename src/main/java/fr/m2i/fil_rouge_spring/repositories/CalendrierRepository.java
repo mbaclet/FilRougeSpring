@@ -19,13 +19,14 @@ public interface CalendrierRepository extends JpaRepository<Event, Long> {
     public List<Event> findAllEventLinkToUser(@Param("user") User user);
 
     @Query(value = "SELECT * FROM Event WHERE user_id = :userid AND MONTH(date) = :mois", nativeQuery = true)
-    public List<Event> eventsLinkToUser(@Param("user") Optional<User> user, @Param("mois") Integer mois);
+    public List<Event> eventsLinkToUser(@Param("userid") Optional<User> user, @Param("mois") Integer mois);
 
     @Query(value = "SELECT c FROM Calendrier c WHERE c.mois = :mois")
     public List<Calendrier> currentMonth(@Param("mois") Integer mois);
 
-    @Query(value = "SELECT e FROM Event e WHERE e.date = :date AND e.user_id = :user")
-    public List<Event> getEvents(@Param("user") Optional<User> user,@Param("date") Integer date);
+   // @Query(value = "SELECT e FROM Event e WHERE e.date = :date AND e.user_id = :user")
+    @Query(value = "SELECT * FROM Event WHERE user_id = :userid AND date = :date", nativeQuery = true)
+    public List<Event> getEvents(@Param("userid") Optional<User> user,@Param("date") String date);
 
     //PART GET COLLABORATORS
     @Query("SELECT c.user FROM Collaborator c WHERE c.user_collabo_id = :user AND c.see = true")

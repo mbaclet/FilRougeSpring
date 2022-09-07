@@ -12,9 +12,7 @@ import java.util.List;
 public interface LoginRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u WHERE u.email LIKE :email")
-    public List<User> getLogin(@Param("email") String email);
+    public User getLogin(@Param("email") String email);
 
-    @Query("SELECT u FROM User u WHERE u.password LIKE :password")
-    public List<User> getPassword(@Param("password") String password);
 
 }

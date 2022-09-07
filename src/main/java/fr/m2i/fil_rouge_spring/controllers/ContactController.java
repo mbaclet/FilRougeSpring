@@ -34,5 +34,10 @@ public class ContactController {
 //    public Collaborator addCollaborator() {
 //        return cs.addCollaborator();
 //    }
+//
+//    @PostMapping("/editCollaborator")
+//    public Collaborator editCollaborator() {
+//        return cs.editCollaborator();
+//    }
 
 }

@@ -30,8 +30,8 @@ public class CalendrierService {
     }
 
     @Transactional()
-    public Iterable<Event> getEvents(Optional<User> user, Integer mois){
-        return cr.getEvents(user, mois);
+    public Iterable<Event> getEvents(Optional<User> user, String date){
+        return cr.getEvents(user, date);
     }
 
     @Transactional()
