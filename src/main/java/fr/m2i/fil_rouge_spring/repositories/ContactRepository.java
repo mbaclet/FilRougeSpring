@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ContactRepository extends JpaRepository<Collaborator, Long> {
@@ -16,16 +17,15 @@ public interface ContactRepository extends JpaRepository<Collaborator, Long> {
     public List<Collaborator> getCollaboratorsById(@Param("userId") Long id);
 
     @Query("SELECT u FROM User u WHERE u.email LIKE :email")
-    public User checkCollaborator(@Param("email") String email);
+    public Optional<User> checkCollaborator(@Param("email") String email);
+
+    @Query("SELECT c FROM Collaborator c WHERE c.user = :id AND c.user_collabo_id = :user_collabo_id")
+    public Collaborator checkIfCollaboratorExists(@Param("id") Long id, @Param("user_collabo_id") User user_collabo_id);
+
 
     @Query("SELECT c FROM Collaborator c WHERE c.user = :id")
     public List<Collaborator> findAllCollaboLinkToUser(@Param("id") Long id);
 
-    @Query("SELECT c FROM Collaborator c WHERE c.user = :id AND c.user_collabo_id = :user_collabo_id")
-    public Boolean checkIfCollaboratorExists(@Param("id") Long id, @Param("user_collabo_id") Long user_collabo_id);
-//
-//    Collaborator addCollaborator();
-//
-//    Collaborator editCollaborator();
+
 }
 

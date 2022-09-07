@@ -17,7 +17,7 @@ public class HomeController {
         return hs.getEvents(id);
     }
 
-    @GetMapping("/getLastEvents")
+    @GetMapping("/getLastsEvent")
     public Iterable<Event> getLasTenEvents(){
         return hs.getLastTenEvents();
     }

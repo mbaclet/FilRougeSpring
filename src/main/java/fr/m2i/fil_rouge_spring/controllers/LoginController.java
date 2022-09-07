@@ -21,7 +21,7 @@ public class LoginController {
     private UserService us;
 
     @GetMapping("/getLogin")
-    public String getLogin(@RequestBody User user){
+    public Object getLogin(@RequestBody User user){
         return ls.getLogin(user);
     }
 

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Data
@@ -22,16 +24,18 @@ public class LoginService {
     @Autowired
     private HashText ht;
 
-    public String getLogin(User user){
+    public Object getLogin(User user){
 
         String passwordSecur = transformPassword(user.getPassword());
         User userFound = lr.getLogin(user.getEmail());
         if(passwordSecur.equals(userFound.getPassword())){
             userFound.setIsConnected(true);
             lr.save(userFound);
-            return "true";
+            Map map = new HashMap() {{put("userId", userFound.get_id()); put("token", "aaa");}};
+            return map;
+        }else{
+            return null;
         }
-        return null;
     }
 
 
